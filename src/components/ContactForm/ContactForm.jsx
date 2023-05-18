@@ -9,8 +9,8 @@ const ContactForm = () => {
     e.preventDefault();
     const form = e.target;
     const name = form.elements.name.value;
-    const phone = form.elements.number.value;
-    dispatch(addContact({ name, phone }));
+    const number = form.elements.number.value;
+    dispatch(addContact({ name, number }));
     e.target.reset();
   };
   return (

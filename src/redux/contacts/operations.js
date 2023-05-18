@@ -1,11 +1,14 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
+
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchContacts',
   async (_, thunkAPI) => {
     try {
       const response = await axios.get('/contacts');
+      console.log(response);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -16,18 +19,19 @@ export const fetchContacts = createAsyncThunk(
 export const addContact = createAsyncThunk(
   'contacts/addContact',
   async (details, thunkAPI) => {
-    const { name, phone } = details;
+    const { name, number } = details;
+    console.log(details);
     try {
       const { contacts } = thunkAPI.getState();
+      console.log(contacts);
       const ifNameExist = contacts.items.find(
         el => el.name.toLowerCase() === details.name.toLowerCase()
       );
-      console.log(ifNameExist);
       if (ifNameExist) {
         alert(`${details.name} is already in contacts.`);
         return thunkAPI.rejectWithValue();
       } else {
-        const response = await axios.post('/contacts', { name, phone });
+        const response = await axios.post('/contacts', { name, number });
         return response.data;
       }
     } catch (e) {
