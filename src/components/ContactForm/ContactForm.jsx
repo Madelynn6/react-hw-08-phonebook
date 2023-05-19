@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { addContact } from 'redux/contacts/operations';
 import PropTypes from 'prop-types';
-import css from './ContactForm.module.css';
+import { Box, Button, Container, TextField } from '@mui/material';
 
 const ContactForm = () => {
   const dispatch = useDispatch();
@@ -14,33 +14,43 @@ const ContactForm = () => {
     e.target.reset();
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        <input
-          className={css.input}
-          type="text"
+    <Container maxWidth="xs">
+      <Box
+        component="form"
+        onSubmit={handleSubmit}
+        sx={{ display: 'flex', flexDirection: 'column', mt: 1 }}
+      >
+        <TextField
+          margin="normal"
+          required
+          id="name"
+          label="Name"
           name="name"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
-          placeholder="Name"
+          autoFocus
+          variant="standard"
         />
-      </label>
-      <label>
-        <input
-          className={css.input}
-          type="tel"
+        <TextField
+          margin="normal"
+          required
+          id="number"
+          label="Number"
           name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          required
-          placeholder="Number"
+          variant="standard"
         />
-      </label>
-      <button className={css.btn} type="submit">
-        Add contact
-      </button>
-    </form>
+        <Button
+          type="submit"
+          variant="contained"
+          sx={{ mt: 3, mb: 2 }}
+          color="orange"
+        >
+          Add contact
+        </Button>
+      </Box>
+    </Container>
   );
 };
 

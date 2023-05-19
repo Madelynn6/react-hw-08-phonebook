@@ -19,6 +19,7 @@ export const AppMenu = () => {
         <Toolbar disableGutters>
           <ContactPhoneIcon
             sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}
+            color="orange"
           />
           <Typography
             variant="h6"

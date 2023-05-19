@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectContacts, selectInputFilter } from 'redux/contacts/selectors';
 import { deleteContact } from 'redux/contacts/operations';
 import PropTypes from 'prop-types';
-import css from './ContactList.module.css';
+import { Button, List, ListItem, ListItemText } from '@mui/material';
 
 const ContactList = () => {
   const contacts = useSelector(selectContacts);
@@ -19,23 +19,21 @@ const ContactList = () => {
   };
 
   return (
-    <ul>
+    <List>
       {filtered.map(el => (
-        <li key={el.id} className={css.li}>
-          <p className={css.text}>{el.name}</p>
-          <p className={css.text}>{el.number}</p>
-
-          <button
+        <ListItem key={el.id} sx={{ display: 'flex', gap: 4 }}>
+          <ListItemText primary={el.name} secondary={el.number} />
+          <Button
+            color="orange"
             name={el.name}
             id={el.id}
             onClick={handleDelete}
-            className={css.btn}
           >
             Delete
-          </button>
-        </li>
+          </Button>
+        </ListItem>
       ))}
-    </ul>
+    </List>
   );
 };
 

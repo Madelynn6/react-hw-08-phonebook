@@ -4,7 +4,7 @@ import { Suspense } from 'react';
 
 export const Layout = () => {
   return (
-    <div className="box">
+    <div>
       <AppMenu />
       <Suspense fallback={null}>
         <Outlet />

@@ -8,7 +8,6 @@ export const fetchContacts = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await axios.get('/contacts');
-      console.log(response);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -20,10 +19,8 @@ export const addContact = createAsyncThunk(
   'contacts/addContact',
   async (details, thunkAPI) => {
     const { name, number } = details;
-    console.log(details);
     try {
       const { contacts } = thunkAPI.getState();
-      console.log(contacts);
       const ifNameExist = contacts.items.find(
         el => el.name.toLowerCase() === details.name.toLowerCase()
       );

@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { setInputFilter } from 'redux/contacts/filterSlice';
 import PropTypes from 'prop-types';
-import css from './Filter.module.css';
+import { TextField } from '@mui/material';
 
 const Filter = () => {
   const dispatch = useDispatch();
@@ -11,19 +11,16 @@ const Filter = () => {
   };
 
   return (
-    <div>
-      <p>Find contacts by name:</p>
-      <input
-        type="text"
-        name="name"
-        pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-        title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-        required
-        onChange={handleFilter}
-        className={css.input}
-        placeholder="Name"
-      />
-    </div>
+    <TextField
+      onChange={handleFilter}
+      margin="normal"
+      id="name"
+      label="Name"
+      name="name"
+      pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+      title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+      variant="standard"
+    />
   );
 };
 

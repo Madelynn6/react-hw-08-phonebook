@@ -7,12 +7,17 @@ import Box from '@mui/material/Box';
 export const Navigation = () => {
   const { isLoggedIn } = useAuth();
   return (
-    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-      <Button component={NavLink} to="/" variant="body2">
+    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, gap: 1 }}>
+      <Button component={NavLink} to="/" color="orange" variant="contained">
         Home
       </Button>
       {isLoggedIn && (
-        <Button component={NavLink} to="/contacts" variant="body2">
+        <Button
+          component={NavLink}
+          to="/contacts"
+          color="orange"
+          variant="contained"
+        >
           Contacts
         </Button>
       )}

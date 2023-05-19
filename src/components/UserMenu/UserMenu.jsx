@@ -12,7 +12,7 @@ export const UserMenu = () => {
   const { user } = useAuth();
 
   return (
-    <Box sx={{ display: 'flex', flexGrow: 0 }}>
+    <Box sx={{ display: 'flex', flexGrow: 0, gap: 1 }}>
       <Box
         sx={{
           display: 'flex',
@@ -25,7 +25,11 @@ export const UserMenu = () => {
           {user.name}
         </Typography>
       </Box>
-      <Button variant="body2" onClick={() => dispatch(logOut())}>
+      <Button
+        color="white"
+        variant="outlined"
+        onClick={() => dispatch(logOut())}
+      >
         Log out
       </Button>
     </Box>
